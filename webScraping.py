@@ -1,37 +1,42 @@
-import bs4,requests,webbrowser
+import bs4
+import requests
+import webbrowser
+from pprint import pprint
 
-LINK="https://www.subito.it/annunci-campania/vendita/auto/subaru/impreza/?q=subaru+impreza"
-PRE_LINK_ANNUNCIO="https://www.subito.it/auto/"
+LINK = "https://www.subito.it/annunci-campania/vendita/auto/subaru/impreza/?q=subaru+impreza"
+PRE_LINK_AD = "https://www.subito.it/auto/"
 
 response = requests.get(LINK)
 response.raise_for_status()
-soup=bs4.BeautifulSoup(response.text,'html.parser')
-div_annunci=soup.find('div',class_='ListingContainer_col__1TZpb ListingContainer_items__3lMdo col items')
-a_annunci=div_annunci.find_all('a')
-link_annunci = []
-for a_annuncio in a_annunci:
-    link_annuncio =str(a_annuncio.get('href'))
-    if PRE_LINK_ANNUNCIO in link_annuncio:
-            link_annunci.append(link_annuncio)
+soup = bs4.BeautifulSoup(response.text, 'html.parser')
+div_ads = soup.find('div', class_='ListingContainer_col__1TZpb ListingContainer_items__3lMdo col items')
+a_ads = div_ads.find_all('a')
+link_ads = []
+for a_ad in a_ads:
+    link_ad = str(a_ad.get('href'))
+    if PRE_LINK_AD in link_ad:
+        link_ads.append(link_ad)
 
-from pprint import pprint
-pprint(link_annunci)
+pprint(link_ads)
 
-f = open('risultati_salvati.txt','a')
-old_link_annunci = [riga.rstrip('\n') for riga in open('risultati_salvati.txt')]
+f = open('result.txt', 'a')
+old_link_ads = [riga.rstrip('\n') for riga in open('result.txt')]
 
-new_link_annunci = []
-for link_annuncio in link_annunci:
-    if link_annuncio not in old_link_annunci:
-        new_link_annunci.append(link_annuncio)
-        f.write('%s\n' % link_annuncio)
+new_link_ads = []
+for link_ad in link_ads:
+    if link_ad not in old_link_ads:
+        new_link_ads.append(link_ads)
+        f.write('%s\n' % link_ad)
 f.close()
 
-if new_link_annunci:
-    print('Ci sono nuovi risultati . . .')
-    for new_link in new_link_annunci:
+print(new_link_ads)
+
+if new_link_ads:
+    print('There are new results . . .')
+    for new_link in new_link_ads:
+        print(new_link)
         webbrowser.open(new_link)
 else:
-    print("Nessun nuovo annuncio.")
+    print("No new announcements.")
 
-input('\n Programma terminato')
+input('\n Program finished.')
