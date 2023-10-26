@@ -29,13 +29,10 @@ for link_ad in link_ads:
         f.write('%s\n' % link_ad)
 f.close()
 
-print(new_link_ads)
-
 if new_link_ads:
     print('There are new results . . .')
     for new_link in new_link_ads:
-        print(new_link)
-        webbrowser.open(new_link)
+        webbrowser.open(str(new_link))
 else:
     print("No new announcements.")
 
