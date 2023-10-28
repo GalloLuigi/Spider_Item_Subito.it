@@ -3,7 +3,32 @@ import requests
 import webbrowser
 from pprint import pprint
 
-LINK = "https://www.subito.it/annunci-campania/vendita/auto/subaru/impreza/?q=subaru+impreza"
+regions = [
+    "abruzzo",
+    "basilicata",
+    "calabria",
+    "campania",
+    "emilia-romagna",
+    "friuli-venezia-giulia",
+    "lazio",
+    "liguria",
+    "lombardia",
+    "marche",
+    "molise",
+    "piemonte",
+    "puglia",
+    "sardegna",
+    "sicilia",
+    "toscana",
+    "trentino-alto-adige",
+    "umbria",
+    "valle-d-aosta",
+]
+
+int_region = input()
+int_region = int(int_region)
+LINK = "https://www.subito.it/annunci-"+regions[int_region]+"/vendita/auto/subaru/impreza/?q=subaru+impreza"
+print("The link are "+LINK)
 PRE_LINK_AD = "https://www.subito.it/auto/"
 
 response = requests.get(LINK)
