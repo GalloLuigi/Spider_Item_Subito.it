@@ -5,9 +5,10 @@ import webbrowser
 from pprint import pprint
 
 # Project Import
-from constants import RESULT_PATH, PRE_LINK_AD
+from utility.constants import RESULT_PATH, PRE_LINK_AD
 from data.regions import regions
 from data.brands import brands
+
 
 # Take input region 3
 int_region = input()
@@ -17,8 +18,11 @@ int_region = int(int_region)
 int_brand = input()
 int_brand = int(int_brand)
 
-LINK = "https://www.subito.it/annunci-" + regions[int_region] + "/vendita/auto/" + brands[int_brand] + "/impreza/?q=" \
-       + brands[int_brand] + "+impreza"
+# Take input model impreza
+model = input()
+
+LINK = "https://www.subito.it/annunci-" + regions[int_region] + "/vendita/auto/" + brands[int_brand] + "/" + model \
+       + "/?q=" + brands[int_brand] + "+" + model
 
 print("The link are "+LINK)
 
