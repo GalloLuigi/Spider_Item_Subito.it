@@ -1,35 +1,27 @@
+# Python Import
 import bs4
 import requests
 import webbrowser
 from pprint import pprint
 
-regions = [
-    "abruzzo",
-    "basilicata",
-    "calabria",
-    "campania",
-    "emilia-romagna",
-    "friuli-venezia-giulia",
-    "lazio",
-    "liguria",
-    "lombardia",
-    "marche",
-    "molise",
-    "piemonte",
-    "puglia",
-    "sardegna",
-    "sicilia",
-    "toscana",
-    "trentino-alto-adige",
-    "umbria",
-    "valle-d-aosta",
-]
+# Project Import
+from constants import RESULT_PATH, PRE_LINK_AD
+from data.regions import regions
+from data.brands import brands
 
+# Take input region 3
 int_region = input()
 int_region = int(int_region)
-LINK = "https://www.subito.it/annunci-"+regions[int_region]+"/vendita/auto/subaru/impreza/?q=subaru+impreza"
+
+# Take input brand 0
+int_brand = input()
+int_brand = int(int_brand)
+
+LINK = "https://www.subito.it/annunci-" + regions[int_region] + "/vendita/auto/" + brands[int_brand] + "/impreza/?q=" \
+       + brands[int_brand] + "+impreza"
+
 print("The link are "+LINK)
-PRE_LINK_AD = "https://www.subito.it/auto/"
+
 
 response = requests.get(LINK)
 response.raise_for_status()
@@ -44,8 +36,8 @@ for a_ad in a_ads:
 
 pprint(link_ads)
 
-f = open('result.txt', 'a')
-old_link_ads = [riga.rstrip('\n') for riga in open('result.txt')]
+f = open(RESULT_PATH, 'a')
+old_link_ads = [riga.rstrip('\n') for riga in open(RESULT_PATH)]
 
 new_link_ads = []
 for link_ad in link_ads:
