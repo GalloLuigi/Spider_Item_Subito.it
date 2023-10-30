@@ -10,6 +10,11 @@ from data.regions import regions
 from data.brands import brands
 
 
+# Definire una funzione per aprire un link nel browser
+def open_link(link_car):
+    webbrowser.open(link_car)
+
+
 # Take input region 3
 int_region = input()
 int_region = int(int_region)
@@ -50,11 +55,13 @@ for link_ad in link_ads:
         f.write('%s\n' % link_ad)
 f.close()
 
-if new_link_ads:
-    print('There are new results . . .')
-    for new_link in new_link_ads:
-        webbrowser.open(str(new_link))
-else:
-    print("No new announcements.")
+# Leggere la lista di link da un file di testo
+with open(RESULT_PATH, "r") as f:
+    links = f.readlines()
+
+# Aprire ogni link nel browser
+for link in links:
+    open_link(link)
+
 
 input('\n Program finished.')
