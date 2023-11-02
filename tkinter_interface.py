@@ -1,8 +1,5 @@
-# from tutorial : https://www.youtube.com/watch?v=2vWCzB9HBgk   time:21.12
-
 import tkinter as tk
 import tkinter.ttk as TTK
-from PIL import ImageTk, Image
 
 
 from data.brands import brands
@@ -21,16 +18,8 @@ def find_cars():
 window = tk.Tk()
 window.geometry("500x300")
 window.title("Subito.it Spider")
-#window.resizable(False, False)
+window.resizable(False, False)
 #window.grid_columnconfigure(0, weight=1)
-
-
-
-
-
-
-
-#window.configure(background="blue")
 
 
 title_label = tk.Label(window, text="Subito.it Web Spider", font=("System", 20))
@@ -49,14 +38,6 @@ title_label.grid(row=3, column=0, padx=5, pady=10)
 
 combo = TTK.Combobox(window, value=brands)
 combo.grid(row=3, column=1, padx=100, pady=20)
-""""
-frame = tk.Frame(window, width=1, height=1)
-frame.grid(row=3, column=2)
-
-img = ImageTk.PhotoImage(Image.open("./utility/images/car-icon.jpg"))
-label = tk.Label(frame, image=img)
-label.grid(row=3, column=2)
-"""""
 
 title_label = tk.Label(window, text="Region name:", font=("System", 15))
 title_label.grid(row=4, column=0, padx=5, pady=10)
