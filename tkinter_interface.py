@@ -4,23 +4,17 @@ import tkinter.ttk as TTK
 
 from data.brands import brands
 from data.regions import regions
+from core.basic_core import find_cars
 
 
-def find_cars():
-    """
-    define find cars
-    text = "try try"
-    text_output = tk.Label(window, text=text, fg="green", font=("Helvetica", 16))
-    text_output.grid(row=0, column=1, padx=100, pady=20)
-    """
+def int_find_cars():
+    find_cars(combo_region.get(), combo_brand.get(), text_input.get())
 
 
 window = tk.Tk()
 window.geometry("500x300")
 window.title("Subito.it Spider")
 window.resizable(False, False)
-#window.grid_columnconfigure(0, weight=1)
-
 
 title_label = tk.Label(window, text="Subito.it Web Spider", font=("System", 20))
 title_label.grid(row=0, column=1, sticky="N", padx=30, pady=10)
@@ -30,23 +24,22 @@ title_label.grid(row=1, column=0, padx=5, pady=10)
 
 text_input = tk.Entry(width=30)
 text_input.grid(row=1, column=1, padx=5, pady=10)
-# text_input.get() ottine quello scritto nel item
 
 
 title_label = tk.Label(window, text="Brand name:", font=("System", 15))
 title_label.grid(row=3, column=0, padx=5, pady=10)
 
-combo = TTK.Combobox(window, value=brands)
-combo.grid(row=3, column=1, padx=100, pady=20)
+combo_brand = TTK.Combobox(window, value=brands)
+combo_brand.grid(row=3, column=1, padx=100, pady=20)
 
 title_label = tk.Label(window, text="Region name:", font=("System", 15))
 title_label.grid(row=4, column=0, padx=5, pady=10)
 
-combo = TTK.Combobox(window, value=regions)
-combo.grid(row=4, column=1, padx=100, pady=20)
+combo_region = TTK.Combobox(window, value=regions)
+combo_region.grid(row=4, column=1, padx=100, pady=20)
 
-find_button = tk.Button(text="Find", command=find_cars)
-find_button.grid(row=5, column=1, padx=100, pady=20,sticky="WE")
+find_button = tk.Button(text="Find", command=int_find_cars)
+find_button.grid(row=5, column=1, padx=100, pady=20, sticky="WE")
 
 
 if __name__ == "__main__":
