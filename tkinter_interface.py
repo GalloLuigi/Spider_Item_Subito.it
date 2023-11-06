@@ -4,11 +4,11 @@ import tkinter.ttk as TTK
 
 from data.brands import brands
 from data.regions import regions
-from core.basic_core import find_cars
+from core.basic_core import find_cars, change_color
 
 
 def int_find_cars():
-    return find_cars(combo_region.get(), combo_brand.get(), text_input.get(), find_button)
+    return change_color(find_button, find_cars(combo_region.get(), combo_brand.get(), text_input.get()))
 
 
 window = tk.Tk()

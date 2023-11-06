@@ -61,13 +61,20 @@ def make_button_color(button, color):
     button.configure(bg=color)
 
 
-def find_cars(region, brand, model, button):
+def change_color(button, option):
+    if option == 0:
+        make_button_color(button, "GREEN")
+        return 0
+    else:
+        make_button_color(button, "RED")
+        return 1
+
+
+def find_cars(region, brand, model):
     link = make_link(region, brand, model)
     if save_link(link) == 0:
-        make_button_color(button, "GREEN")
         links = make_list_link()
         open_links(links)
         return 0
     else:
-        make_button_color(button, "RED")
         return 1
