@@ -8,7 +8,7 @@ from core.basic_core import find_cars
 
 
 def int_find_cars():
-    find_cars(combo_region.get(), combo_brand.get(), text_input.get())
+    return find_cars(combo_region.get(), combo_brand.get(), text_input.get(), find_button)
 
 
 window = tk.Tk()

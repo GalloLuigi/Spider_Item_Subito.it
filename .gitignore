@@ -11,3 +11,8 @@ utility/__pycache__/constants.cpython-39.pyc
 utility/__pycache__/constants.cpython-39.pyc
 result/result.txt
 result/result.txt
+__pycache__/tkinter_interface.cpython-39.pyc
+core/__pycache__/basic_core.cpython-39.pyc
+*.pyc
+*.pyc
+core/__pycache__/basic_core.cpython-39.pyc
