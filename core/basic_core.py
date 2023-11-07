@@ -78,3 +78,11 @@ def find_cars(region, brand, model):
         return 0
     else:
         return 1
+
+
+def clear_file(file_path):
+    open(file_path, 'w').close()
+
+    f = open(file_path, 'r+')
+    f.truncate(0)  # need '0' when using r+
+

@@ -4,7 +4,8 @@ import tkinter.ttk as TTK
 
 from data.brands import brands
 from data.regions import regions
-from core.basic_core import find_cars, change_color
+from core.basic_core import find_cars, change_color, clear_file
+from utility.constants import RESULT_PATH
 
 
 def int_find_cars():
@@ -15,6 +16,31 @@ window = tk.Tk()
 window.geometry("500x300")
 window.title("Subito.it Spider")
 window.resizable(False, False)
+
+# create a menubar
+menubar = tk.Menu(window)
+window.config(menu=menubar)
+
+# create a menu
+file_menu = tk.Menu(menubar)
+
+# add a menu item to the menu
+file_menu.add_command(
+    label='Exit',
+    command=window.destroy
+)
+
+file_menu.add_command(
+    label='Clear Result',
+    command=clear_file(RESULT_PATH)
+)
+
+# add the File menu to the menubar
+menubar.add_cascade(
+    label="File",
+    menu=file_menu
+)
+
 
 title_label = tk.Label(window, text="Subito.it Web Spider", font=("System", 20))
 title_label.grid(row=0, column=1, sticky="N", padx=30, pady=10)
