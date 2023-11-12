@@ -71,13 +71,19 @@ def change_color(button, option):
 
 
 def find_cars(region, brand, model):
+    print("Enter find cars")
+    print("Region:"+region)
+    print("Brand:"+brand)
+    print("Model:"+model)
     link = make_link(region, brand, model)
     if save_link(link) == 0:
         links = make_list_link()
         open_links(links)
+        print("End 0 find cars")
         return 0
     else:
         return 1
+        print("End 1 find cars")
 
 
 def clear_file(file_path):

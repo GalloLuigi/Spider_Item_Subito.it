@@ -20,3 +20,4 @@ core/__pycache__/basic_core.cpython-39.pyc
 result/result.txt
 *.pyc
 complex_example.py
+*.pyc
