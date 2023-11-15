@@ -21,3 +21,5 @@ result/result.txt
 *.pyc
 complex_example.py
 *.pyc
+*.pyc
+result/result.txt

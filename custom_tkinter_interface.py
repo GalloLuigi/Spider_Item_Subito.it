@@ -85,9 +85,9 @@ class App(customtkinter.CTk):
         self.radio_var = tkinter.IntVar(value=0)
         #self.label_radio_group = customtkinter.CTkLabel(master=self.radiobutton_frame, text="")
         #self.label_radio_group.grid(row=0, column=2, columnspan=1, padx=10, pady=10, sticky="")
-        self.radio_button_1 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, variable=self.radio_var, value=0, text="fuel")
+        self.radio_button_1 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, variable=self.radio_var, value="Benzina", text="fuel")
         self.radio_button_1.grid(row=1, column=2, pady=10, padx=20, sticky="n")
-        self.radio_button_2 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, variable=self.radio_var, value=1, text="disel")
+        self.radio_button_2 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, variable=self.radio_var, value="disel", text="disel")
         self.radio_button_2.grid(row=2, column=2, pady=10, padx=20, sticky="n")
 
 
@@ -115,7 +115,7 @@ class App(customtkinter.CTk):
         print("sidebar_button click")
 
     def int_find_cars(self):
-        return find_cars(self.combobox_1.get(), self.combobox_0.get(), self.entry.get())
+        return find_cars(self.combobox_1.get(), self.combobox_0.get(), self.entry.get(), self.radio_var.get())
 
 
 if __name__ == "__main__":
