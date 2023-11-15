@@ -8,13 +8,14 @@ import utility.constants
 from utility.constants import RESULT_PATH, PRE_LINK_AD
 
 
-def make_link(region, brand, model, fuel="Benzina"):
-    link = "https://www.subito.it/annunci-" + region + "/vendita/auto/" + brand + "/" + model \
-               + "/?q=" + brand + "+" + model
+def make_link(region, brand, model, fuel="benzina"):
+    prelink = "https://www.subito.it/annunci-" + region + "/vendita/auto/" + brand + "/" + model
+
+    postlink = "/?q=" + brand + "+" + model
     if fuel == 0:
-        return link
+        return prelink+postlink
     else:
-        return link+"/"+fuel
+        return prelink+"/"+fuel+postlink
 
 
 def save_link(link):
@@ -74,20 +75,27 @@ def change_color(button, option):
         return 1
 
 
+def convert_fuel(fuel):
+    if fuel == 0:
+        return "benzina"
+    else:
+        return "diesel"
+
 def find_cars(region, brand, model, fuel):
     print("Enter find cars")
     print("Region:"+region)
     print("Brand:"+brand)
     print("Model:"+model)
+    fuel=convert_fuel(fuel)
+    print("Fuel:"+str(fuel))
     link = make_link(region, brand, model, fuel)
+    print("Link:"+link)
     if save_link(link) == 0:
         links = make_list_link()
         open_links(links)
-        print("End 0 find cars")
         return 0
     else:
         return 1
-        print("End 1 find cars")
 
 
 def clear_file(file_path):
