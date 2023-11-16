@@ -5,7 +5,7 @@ from pprint import pprint
 
 import utility.constants
 #import tkinter_interface
-from utility.constants import RESULT_PATH, PRE_LINK_AD
+from utility.constants import RESULT_PATH, PRE_LINK_AD, MAX_NUMBER_OF_TABS
 
 
 def delete_file(file_path):
@@ -75,9 +75,13 @@ def open_link(link_car):
 
 
 def open_links(links):
+    i = 0
     for link in links:
+        print("i:"+str(i)+" max:"+str(MAX_NUMBER_OF_TABS))
+        if i == MAX_NUMBER_OF_TABS-1:
+            break
+        i = i+1
         open_link(link)
-
 
 def make_button_color(button, color):
     button.configure(bg=color)
