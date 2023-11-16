@@ -1,8 +1,12 @@
 import tkinter
 import tkinter.messagebox
+import webbrowser
+
 import customtkinter
 
 from core.basic_core import find_cars, clear_result
+import utility.constants
+from core.basic_core import find_cars
 from data.brands import brands
 from data.regions import regions
 
@@ -74,7 +78,7 @@ class App(customtkinter.CTk):
         self.e_tabview.tab("Extra Info").grid_columnconfigure(1, weight=1)  # configure grid of individual tabs
 
 
-        self.string_input_button = customtkinter.CTkButton(self.e_tabview.tab("Extra Info"), text="Enter displacement",
+        self.string_input_button = customtkinter.CTkButton(self.e_tabview.tab("Extra Info"), text="Max Tabs",
                                                            command=self.open_input_dialog_event)
         self.string_input_button.grid(row=2, column=0, padx=20, pady=(10, 10))
 
@@ -101,8 +105,10 @@ class App(customtkinter.CTk):
 
 
     def open_input_dialog_event(self):
-        dialog = customtkinter.CTkInputDialog(text="Enter displacement:", title="Enter displacement")
-        print("Enter displacement:", dialog.get_input())
+        dialog = customtkinter.CTkInputDialog(text="Enter max number of tabs:", title="Max Tabs")
+        numeber_tab = int(dialog.get_input())
+        print("Enter max number of tabs:", str(numeber_tab))
+        utility.constants.MAX_NUMBER_OF_TABS = numeber_tab
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
@@ -112,7 +118,7 @@ class App(customtkinter.CTk):
         customtkinter.set_widget_scaling(new_scaling_float)
 
     def sidebar_button_event(self):
-        print("sidebar_button click")
+        webbrowser.open("https://github.com/GalloLuigi")
 
     def int_find_cars(self):
         clear_result()
