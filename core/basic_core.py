@@ -8,6 +8,23 @@ import utility.constants
 from utility.constants import RESULT_PATH, PRE_LINK_AD
 
 
+def delete_file(file_path):
+    from os import remove
+    try:
+        remove(file_path)
+        return True
+    except FileNotFoundError:
+        return False
+
+def create_result_txt(path_data):
+    from os import path
+
+    file_path = path.join(path_data, "result.txt")
+    with open(file_path, "w") as f:
+        f.write("")
+
+    return file_path
+
 def make_link(region, brand, model, fuel="benzina"):
     prelink = "https://www.subito.it/annunci-" + region + "/vendita/auto/" + brand + "/" + model
 
@@ -98,9 +115,7 @@ def find_cars(region, brand, model, fuel):
         return 1
 
 
-def clear_file(file_path):
-    open(file_path, 'w').close()
-
-    f = open(file_path, 'r+')
-    f.truncate(0)  # need '0' when using r+
+def clear_result():
+    delete_file(RESULT_PATH)
+    create_result_txt(utility.constants.RESULT_PATH_NO_FILE)
 

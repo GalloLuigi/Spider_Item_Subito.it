@@ -2,7 +2,7 @@ import tkinter
 import tkinter.messagebox
 import customtkinter
 
-from core.basic_core import find_cars
+from core.basic_core import find_cars, clear_result
 from data.brands import brands
 from data.regions import regions
 
@@ -115,6 +115,7 @@ class App(customtkinter.CTk):
         print("sidebar_button click")
 
     def int_find_cars(self):
+        clear_result()
         return find_cars(self.combobox_1.get(), self.combobox_0.get(), self.entry.get(), self.radio_var.get())
 
 
