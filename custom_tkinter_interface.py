@@ -4,7 +4,7 @@ import webbrowser
 
 import customtkinter
 
-from core.basic_core import find_cars, clear_result
+from core.basic_core import find_cars, clear_result, delete_file, crea_max_tab_file
 import utility.constants
 from core.basic_core import find_cars
 from data.brands import brands
@@ -17,6 +17,10 @@ customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "gre
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
+
+        # configure Tab default value
+        delete_file("data/tabs_number.txt")
+        crea_max_tab_file(20)
 
         # configure window
         self.title("Subito.it Cars Spider")
@@ -108,7 +112,9 @@ class App(customtkinter.CTk):
         dialog = customtkinter.CTkInputDialog(text="Enter max number of tabs:", title="Max Tabs")
         numeber_tab = int(dialog.get_input())
         print("Enter max number of tabs:", str(numeber_tab))
-        utility.constants.MAX_NUMBER_OF_TABS = numeber_tab
+        file_name = "data/tabs_number.txt"
+        delete_file(file_name)
+        crea_max_tab_file(numeber_tab)
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)

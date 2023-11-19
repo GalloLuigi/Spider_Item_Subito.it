@@ -5,7 +5,24 @@ from pprint import pprint
 
 import utility.constants
 #import tkinter_interface
-from utility.constants import RESULT_PATH, PRE_LINK_AD, MAX_NUMBER_OF_TABS
+from utility.constants import RESULT_PATH, PRE_LINK_AD, MAX_NUMBER_OF_TABS_PATH
+
+
+
+
+def crea_max_tab_file(numero_intero):
+    with open(MAX_NUMBER_OF_TABS_PATH, "w") as f:
+        f.write(str(numero_intero))
+
+
+def read_tabs_numb(file_path):
+    with open(file_path, "r") as f:
+        numero_intero_stringa = f.readline()
+    try:
+        numero_intero = int(numero_intero_stringa)
+    except ValueError:
+        raise ValueError("Il file non contiene un numero intero")
+    return numero_intero
 
 
 def delete_file(file_path):
@@ -77,8 +94,7 @@ def open_link(link_car):
 def open_links(links):
     i = 0
     for link in links:
-        print("i:"+str(i)+" max:"+str(MAX_NUMBER_OF_TABS))
-        if i == MAX_NUMBER_OF_TABS-1:
+        if i == read_tabs_numb(MAX_NUMBER_OF_TABS_PATH):
             break
         i = i+1
         open_link(link)
