@@ -5,7 +5,6 @@ import webbrowser
 import customtkinter
 
 from core.basic_core import find_cars, clear_result, delete_file, crea_max_tab_file
-import utility.constants
 from core.basic_core import find_cars
 from data.brands import brands
 from data.regions import regions
@@ -72,15 +71,11 @@ class App(customtkinter.CTk):
                                                     values=regions)
         self.combobox_1.grid(row=1, column=0, padx=20, pady=(10, 10))
 
-
-
-
         # create tabview 2
         self.e_tabview = customtkinter.CTkTabview(self, width=250)
         self.e_tabview.grid(row=0, column=2, padx=(20, 0), pady=(20, 0), sticky="nsew")
         self.e_tabview.add("Extra Info")
         self.e_tabview.tab("Extra Info").grid_columnconfigure(1, weight=1)  # configure grid of individual tabs
-
 
         self.string_input_button = customtkinter.CTkButton(self.e_tabview.tab("Extra Info"), text="Max Tabs",
                                                            command=self.open_input_dialog_event)
@@ -91,14 +86,11 @@ class App(customtkinter.CTk):
         self.radiobutton_frame.grid(row=0, column=0, padx=(20, 20), pady=(10, 10), sticky="n")
 
         self.radio_var = tkinter.IntVar(value=0)
-        #self.label_radio_group = customtkinter.CTkLabel(master=self.radiobutton_frame, text="")
-        #self.label_radio_group.grid(row=0, column=2, columnspan=1, padx=10, pady=10, sticky="")
+
         self.radio_button_1 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, variable=self.radio_var, value=0, text="gasoline")
         self.radio_button_1.grid(row=1, column=2, pady=10, padx=20, sticky="n")
         self.radio_button_2 = customtkinter.CTkRadioButton(master=self.radiobutton_frame, variable=self.radio_var, value=1, text="disel")
         self.radio_button_2.grid(row=2, column=2, pady=10, padx=20, sticky="n")
-
-
 
         # set default values
 
@@ -106,7 +98,6 @@ class App(customtkinter.CTk):
         self.scaling_optionemenu.set("100%")
         self.combobox_0.set("Brand name")
         self.combobox_1.set("Region name")
-
 
     def open_input_dialog_event(self):
         dialog = customtkinter.CTkInputDialog(text="Enter max number of tabs:", title="Max Tabs")

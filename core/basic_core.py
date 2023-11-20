@@ -2,27 +2,23 @@ import bs4
 import requests
 import webbrowser
 from pprint import pprint
-
 import utility.constants
-#import tkinter_interface
 from utility.constants import RESULT_PATH, PRE_LINK_AD, MAX_NUMBER_OF_TABS_PATH
 
 
-
-
-def crea_max_tab_file(numero_intero):
+def crea_max_tab_file(number):
     with open(MAX_NUMBER_OF_TABS_PATH, "w") as f:
-        f.write(str(numero_intero))
+        f.write(str(number))
 
 
 def read_tabs_numb(file_path):
     with open(file_path, "r") as f:
-        numero_intero_stringa = f.readline()
+        number_string = f.readline()
     try:
-        numero_intero = int(numero_intero_stringa)
+        num_integer = int(number_string)
     except ValueError:
-        raise ValueError("Il file non contiene un numero intero")
-    return numero_intero
+        raise ValueError("Not a integer")
+    return num_integer
 
 
 def delete_file(file_path):
@@ -33,6 +29,7 @@ def delete_file(file_path):
     except FileNotFoundError:
         return False
 
+
 def create_result_txt(path_data):
     from os import path
 
@@ -42,9 +39,9 @@ def create_result_txt(path_data):
 
     return file_path
 
+
 def make_link(region, brand, model, fuel="benzina"):
     prelink = "https://www.subito.it/annunci-" + region + "/vendita/auto/" + brand + "/" + model
-
     postlink = "/?q=" + brand + "+" + model
     if fuel == 0:
         return prelink+postlink
@@ -81,6 +78,7 @@ def save_link(link):
 
     return 0
 
+
 def make_list_link():
     with open(RESULT_PATH, "r") as f:
         links = f.readlines()
@@ -99,18 +97,6 @@ def open_links(links):
         i = i+1
         open_link(link)
 
-def make_button_color(button, color):
-    button.configure(bg=color)
-
-
-def change_color(button, option):
-    if option == 0:
-        make_button_color(button, "GREEN")
-        return 0
-    else:
-        make_button_color(button, "RED")
-        return 1
-
 
 def convert_fuel(fuel):
     if fuel == 0:
@@ -118,12 +104,13 @@ def convert_fuel(fuel):
     else:
         return "diesel"
 
+
 def find_cars(region, brand, model, fuel):
     print("Enter find cars")
     print("Region:"+region)
     print("Brand:"+brand)
     print("Model:"+model)
-    fuel=convert_fuel(fuel)
+    fuel = convert_fuel(fuel)
     print("Fuel:"+str(fuel))
     link = make_link(region, brand, model, fuel)
     print("Link:"+link)
