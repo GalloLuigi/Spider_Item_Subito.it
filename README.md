@@ -16,7 +16,10 @@ La classe Spider utilizza la libreria BeautifulSoup per analizzare il codice HTM
 **Istruzioni di installazione:**
 
 Per installare il progetto, è necessario clonare il repository GitHub:
-https://github.com/GalloLuigi/Spider_Item_Subito.it
+
+```
+git clone https://github.com/GalloLuigi/Spider_Item_Subito.it
+```
 
 Successivamente, è necessario installare le librerie necessarie:
 
