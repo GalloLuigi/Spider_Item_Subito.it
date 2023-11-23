@@ -4,7 +4,7 @@ Spider_Item_Subito.it è un progetto Python che consente la ricerca veloce di au
 Il progetto è composto da due parti principali:
 
 * Una classe Spider che si occupa di effettuare il web scraping del sito web Subito.it per recuperare i dati delle auto in vendita.
-* Un programma Tkinter che fornisce un'interfaccia utente per consentire agli utenti di cercare le auto in base a vari criteri, come marca, modello, prezzo, ecc.
+* Un programma Tkinter che fornisce un'interfaccia utente per consentire agli utenti di cercare le auto in base a vari criteri, come marca, modello, ecc.
 La classe Spider utilizza la libreria BeautifulSoup per analizzare il codice HTML del sito web Subito.it.
 
 **Requisiti:**
