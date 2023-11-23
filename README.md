@@ -42,7 +42,7 @@ I contributi al progetto sono ben accetti. Per contribuire al progetto, è neces
 
 **Esempio di utilizzo:**
 
-![Immagine 2023-11-23 214808](https://github.com/GalloLuigi/Spider_Item_Subito.it/assets/71981111/e793eb90-52ac-40e2-8c87-8db65e905d7c)
+![Immagine](https://drive.google.com/)
 
 Premendo il bottone "Find" il programma prima aprirà nel broswer predefinito tutti gli anninci in Campania di auto a benzina con marca "subaru" e nome "impreza".
 
